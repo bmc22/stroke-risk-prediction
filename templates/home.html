@@ -1,0 +1,123 @@
+<html lang= "en">
+<head>
+
+<meta charset= "utf-8"/>
+
+    <script src="static\js\script.js"> </script>
+
+    <link rel="stylesheet" href="static\css\styles.css" />
+
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn&family=Yantramanav:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<div class="heading">
+
+<img src= "static\brainStroke.png" width= 100% height= 50% />
+<h1> The WHO announced that stroke is the second cause of death globally. Therefore, this webpage deploys a machine learning algorithm (
+<a target="_blank" href="https://medium.com/towards-data-science/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">XGBoost</a>)
+which predicts if you are at risk of getting a stroke based on some clinical features, which you can provide in the form below.
+To make this prediction (mostly) accurate, the model was optimised and trained on a large dataset, and carafully tested and chosen as the best model among several powerful machine learning models.
+
+</h1>
+
+</div>
+
+
+
+
+<form method="POST" action= "{{url_for('predict')}}">
+
+    <fieldset>
+
+
+		<div class="sec1">
+        <select name="gender">
+        <option value="" disabled selected hidden>Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        </select>
+
+        <br>
+
+        <input placeholder= "Age" name= "age">
+
+        <br>
+
+        <select name= "hypertension">
+        <option value="" disabled selected hidden>Hypertension</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+
+        <select name= "heart_disease">
+        <option value="" disabled selected hidden>Heart disease</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+
+        <select name= "ever_married">
+        <option value="" disabled selected hidden>Ever married</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+		</div>
+		<div class="sec2">
+
+         <select name= "residence_type">
+        <option value="" disabled selected hidden>Residence type</option>
+        <option value="urban">Urban</option>
+        <option value="rural">Rural</option>
+        </select>
+
+        <br>
+
+        <input id="avg" placeholder="Average glucose level" name= "avg_glucose_level">
+
+        <br>
+
+        <input id="bmi" placeholder= "Body Mass Index (BMI)" name= "bmi">
+
+        <br>
+
+        <select name= "work_type">
+        <option value="" disabled selected hidden>Work type</option>
+        <option value="gvt_job">Government job</option>
+        <option value="never_worked">Never worked</option>
+        <option value="private">Private</option>
+        <option value="self_employed">Self employed</option>
+        <option value="child">Child</option>
+        </select>
+
+
+        <br>
+
+        <select name= "smoking_status">
+        <option value="" disabled selected hidden>Smoking status</option>
+        <option value="formerly_smoked">Formerly smoked</option>
+        <option value="never_smoked">Never smoked</option>
+        <option value="smokes">Smokes</option>
+        </select>
+
+
+		</div>
+
+		<div class="clear"></div>
+
+         <input id="send" type="submit" value="Submit    &#8594">
+    </fieldset>
+</form>
+
+
+</body>
+
+</html>

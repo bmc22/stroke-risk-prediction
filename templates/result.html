@@ -1,0 +1,31 @@
+<html lang= "en">
+<head>
+
+<meta charset= "utf-8"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn&family=Yantramanav:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static\css\styles.css" />
+</head>
+<div>
+{% if prediction == 0 %}
+
+<h1> The model has predicted that you are not at risk of getting a stroke. </h1>
+
+{% endif %}
+
+{% if prediction == 1 %}
+
+<h1> The model has predicted that you are at risk of getting a stroke. </h1>
+
+{% endif %}
+</div>
+
+<div class="button">
+    <a class="go-back" href="/"> &larr; Go back </a>
+</div>
+
+
+
+
+</html>
