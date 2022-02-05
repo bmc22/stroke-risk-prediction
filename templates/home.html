@@ -1,0 +1,244 @@
+<html lang= "en">
+<head>
+
+<meta charset= "utf-8"/>
+
+<script>
+
+window.addEventListener("load", function () {
+ var send= document.querySelector("#send");
+ var form= document.querySelector("form");
+
+
+window.addEventListener("scroll", function() {
+
+    if (form.getBoundingClientRect().top < window.innerHeight - 100) {
+      form.classList.add("active");
+    } else {
+      form.classList.remove("active");
+    }
+
+})
+})
+
+</script>
+
+<style>
+
+body::-webkit-scrollbar {
+  width: .7em;
+}
+
+body::-webkit-scrollbar-track {
+  background: #bb1e3d;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #edf6fe;
+  border-radius: .5em;}
+
+
+input:focus{border-bottom: 2px solid #5f67ac;}
+
+select:focus{border-bottom: 2px solid #5f67ac;}
+
+::placeholder {color: #edf6fe;}
+
+body{width: 100%; background-color: #bb1e3d; margin: 2em auto 0 auto; color: red; font-family: 'Vollkorn', serif;  font-weight: 400}
+
+
+@media screen and (min-width: 980px) {
+  .sec1 {float: left; width: 40%; }
+  .sec2 {float: right;width: 40%; }
+  body{width: 60%; }
+}
+
+
+form {text-align: center; margin: 10em auto;
+  position: relative;
+  transform: translateY(10em);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.active{
+transform: translateY(0);
+opacity: 1;
+}
+
+@keyframes out {
+from{transform: scale(0.0);}
+to {transform: scale(1.0)} }
+
+fieldset{border: none; }
+
+input, select {
+  color: #edf6fe;
+  font-size: 1em;
+  background: none;
+  border: solid #bb1e3d;
+  width: 100%;
+  padding: 0.7em 1.2em;
+  margin-bottom: 2em;
+  border-bottom: 2px solid #edf6fe;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  box-sizing: border-box;
+  }
+
+
+select option{
+color: #000;
+font-size: 1em;
+padding:1em;
+background-color: none;
+border: solid 2px #e29c9c;
+}
+
+h1 {margin-top: 2em ; line-height: 2em; color: #c6d7fa; text-align: center; font-size: 1.5em; }
+
+.clear{clear: both}
+
+a {color: #5f67ac; text-decoration: none;
+-webkit-transition: 0.5s;
+transition: 0.5s;}
+a:hover{color: #373d6b}
+
+.heading {text-align: center; animation: out 1s ease-out 1 both ; }
+
+	  input[type=submit] {
+	    width: 40%;
+		margin-top: 3em;
+		font-weight: bold;
+		-webkit-transition: 0.5s;
+	  transition: 0.5s;
+	  background: #edf6fe;
+	  color: #bb1e3d;
+	  border: solid #edf6fe;
+	  border-radius: 3px
+
+	  }
+
+	  input[type=submit]:hover {
+	  color: #edf6fe;
+	  background: #bb1e3d;
+	  border: solid #edf6fe;
+	 }
+
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn&family=Yantramanav:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<div class="heading">
+
+<img src= "static\brainStroke.png" width= 100% height= 50% />
+<h1> The WHO announced that stroke is the second cause of death globally. Therefore, this webpage deploys a machine learning algorithm (
+<a target="_blank" href="https://medium.com/towards-data-science/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">XGBoost</a>)
+which predicts if you are at risk of getting a stroke based on some clinical features, which you can provide in the form below.
+To make this prediction (mostly) accurate, the model was optimised and trained on a large dataset, and carafully tested and chosen as the best model among several powerful machine learning models.
+
+</h1>
+
+</div>
+
+
+
+
+<form method="POST" action= "{{url_for('predict')}}">
+
+    <fieldset>
+
+
+		<div class="sec1">
+        <select name="gender">
+        <option value="" disabled selected hidden>Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        </select>
+
+        <br>
+
+        <input placeholder= "Age" name= "age">
+
+        <br>
+
+        <select name= "hypertension">
+        <option value="" disabled selected hidden>Hypertension</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+
+        <select name= "heart_disease">
+        <option value="" disabled selected hidden>Heart disease</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+
+        <select name= "ever_married">
+        <option value="" disabled selected hidden>Ever married</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        </select>
+
+        <br>
+		</div>
+		<div class="sec2">
+
+         <select name= "residence_type">
+        <option value="" disabled selected hidden>Residence type</option>
+        <option value="urban">Urban</option>
+        <option value="rural">Rural</option>
+        </select>
+
+        <br>
+
+        <input id="avg" placeholder="Average glucose level" name= "avg_glucose_level">
+
+        <br>
+
+        <input id="bmi" placeholder= "Body Mass Index (BMI)" name= "bmi">
+
+        <br>
+
+        <select name= "work_type">
+        <option value="" disabled selected hidden>Work type</option>
+        <option value="gvt_job">Government job</option>
+        <option value="never_worked">Never worked</option>
+        <option value="private">Private</option>
+        <option value="self_employed">Self employed</option>
+        <option value="child">Child</option>
+        </select>
+
+
+        <br>
+
+        <select name= "smoking_status">
+        <option value="" disabled selected hidden>Smoking status</option>
+        <option value="formerly_smoked">Formerly smoked</option>
+        <option value="never_smoked">Never smoked</option>
+        <option value="smokes">Smokes</option>
+        </select>
+
+
+		</div>
+
+		<div class="clear"></div>
+
+         <input id="send" type="submit" value="Submit    &#8594">
+    </fieldset>
+</form>
+
+
+</body>
+
+</html>
